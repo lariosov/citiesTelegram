@@ -3,7 +3,7 @@ This game "Cities" in telegram chat.
 
 # mainProblem
 
-Always, when i play with my girlfriend in cities we are forget about cities and dont know - this city was used or not.
+Always, when i play with my girlfriend in 'cities' we are forget about cities names and dont know - this city was used or not.
 
 # howToPlay
 
