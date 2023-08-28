@@ -15,19 +15,19 @@ def main():
 
 
 # Начало, реагирование на команду start
-
 @dp.message_handler(commands='start')
 async def start(message: types.Message):
     await message.answer(f'Игра началась. Первый говорит {message.from_user.first_name}!')
 
+
+# Очистка списка использованных городов
 @dp.message_handler(commands='clear')
 async def clear(message: types.Message):
     const.USED_CITIES = []
     await message.answer(f'Игрок {message.from_user.first_name} начинает список городов заново!')
 
 
-# Проверка сколько городов уже было использовано
-
+# Проверка сколько городов уже было использовано (возвращает количество названных городов)
 @dp.message_handler(commands='check')
 async def check(message: types.Message):
 
@@ -44,7 +44,6 @@ async def check(message: types.Message):
 
 
 # Основная игра
-
 @dp.message_handler()
 async def game(message: types.Message):
 
