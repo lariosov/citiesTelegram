@@ -42,16 +42,24 @@ async def check(message: types.Message):
 
 @dp.message_handler()
 async def game(message: types.Message):
-    
+
     msg = message.text
     msg = msg.upper()
 
+    # Проверка на использование ранее этого города
     if msg in const.USED_CITIES:
         await message.answer(f'Город {msg} уже был в этой игре.')
+        
     elif msg not in const.USED_CITIES:
+
         const.USED_CITIES.append(msg)
         letter = list(msg)
-        await message.answer(f'Следующему игроку город на букву: {letter[-1]}')
+
+        # Проверка на буквы, к которым невозможно подобрать город
+        if letter[-1] in const.NO_CHANCE_LETTER:
+            await message.answer(f'Следующему игроку город на букву: {letter[-2]}')
+        else:
+            await message.answer(f'Следующему игроку город на букву: {letter[-1]}')
 
 
 if __name__ == '__main__':
