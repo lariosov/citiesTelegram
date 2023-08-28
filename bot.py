@@ -14,10 +14,14 @@ def main():
     executor.start_polling(dp, skip_updates=True)
 
 
+# Начало, реагирование на команду start
+
 @dp.message_handler(commands='start')
 async def start(message: types.Message):
     await message.answer(f'Игра началась. Первый говорит {message.from_user.first_name}!')
 
+
+# Проверка сколько городов уже было использовано
 
 @dp.message_handler(commands='check')
 async def check(message: types.Message):
@@ -34,6 +38,8 @@ async def check(message: types.Message):
         await message.answer(f'На данный момент названо {count} города.')
 
 
+# Основная игра
+
 @dp.message_handler()
 async def game(message: types.Message):
     
@@ -44,8 +50,8 @@ async def game(message: types.Message):
         await message.answer(f'Город {msg} уже был в этой игре.')
     elif msg not in const.USED_CITIES:
         const.USED_CITIES.append(msg)
-        initial_letter = list(msg)
-        await message.answer(f'Следующему игроку город на букву: {initial_letter[-1]}')
+        letter = list(msg)
+        await message.answer(f'Следующему игроку город на букву: {letter[-1]}')
 
 
 if __name__ == '__main__':
