@@ -20,6 +20,11 @@ def main():
 async def start(message: types.Message):
     await message.answer(f'Игра началась. Первый говорит {message.from_user.first_name}!')
 
+@dp.message_handler(commands='clear')
+async def clear(message: types.Message):
+    const.USED_CITIES = []
+    await message.answer(f'Игрок {message.from_user.first_name} начинает список городов заново!')
+
 
 # Проверка сколько городов уже было использовано
 
@@ -49,7 +54,7 @@ async def game(message: types.Message):
     # Проверка на использование ранее этого города
     if msg in const.USED_CITIES:
         await message.answer(f'Город {msg} уже был в этой игре.')
-        
+
     elif msg not in const.USED_CITIES:
 
         const.USED_CITIES.append(msg)
