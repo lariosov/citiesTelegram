@@ -10,5 +10,6 @@ Always, when i play with my girlfriend in 'cities' we are forget about cities na
 This telegram-bot should be added in group and than you can play in cities and forget about this problem.
 
 Than you can use commands:
-/start - to start play
-/check - count of cities was used
+/start - to start play |
+/check - count of cities was used |
+/clear - clear cities and start game again
