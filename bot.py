@@ -59,17 +59,18 @@ async def game(message: types.Message):
         const.USED_CITIES.append(msg)
         letter = list(msg)
 
-        # Проверка на буквы, к которым невозможно подобрать город
-        if letter[-1] in const.NO_CHANCE_LETTER:
-            await message.answer(f'Следующему игроку город на букву: {letter[-2]}')
-
-        elif letter[-1] not in const.NO_CHANCE_LETTER:
+        if letter[-1] not in const.NO_CHANCE_LETTER:
 
             last_letter_used = const.USED_CITIES[0]
             last_letter_used = list(last_letter_used[-1])
 
             if letter[-1] in last_letter_used and letter[-1] == last_letter_used[0]:
-                await message.answer(f'Следующему игроку город на букву: {letter[-1]}')
+
+                        # Проверка на буквы, к которым невозможно подобрать город
+                if letter[-1] in const.NO_CHANCE_LETTER:
+                    await message.answer(f'Следующему игроку город на букву: {letter[-2]}')
+                else:
+                    await message.answer(f'Следующему игроку город на букву: {letter[-1]}')
 
             elif letter[-1] not in last_letter_used:
                 await message.answer(f'Твой город НЕ начинается на букву: {last_letter_used[0]}')
