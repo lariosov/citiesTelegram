@@ -70,10 +70,13 @@ async def game(message: types.Message):
             print(last_letter_used[0])
         
             if letter[0] == last_letter_used[0]:
+                
                 const.USED_CITIES.append(msg)
+
                 # Проверка на буквы, к которым невозможно подобрать город
                 if letter[-1] in const.NO_CHANCE_LETTER:
                     await message.answer(f'Следующему игроку город на букву: {letter[-2]}')
+
                 else:
                     await message.answer(f'Следующему игроку город на букву: {letter[-1]}')
 
