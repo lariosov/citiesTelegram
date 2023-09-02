@@ -13,3 +13,6 @@ Than you can use commands:
 /start - to start play |
 /check - count of cities was used |
 /clear - clear cities and start game again
+
+# howToInstall
+Install rep and create config.py file. Than create variable TOKEN_BOT = 'YOUR_API_KEY'
